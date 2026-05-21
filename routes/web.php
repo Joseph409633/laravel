@@ -22,16 +22,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 use App\Http\Controllers\ProjectController;
-use Inertia\Inertia;
 
-Route::get('/projects', function(){
-    return Inertia::render('Projects', [
-    'projects' => ProjectController::class, 'index'
-]);
-}); // API
+// return Inertia::render('Projects', [
+//     'projects' => Project::all()
+// ]);
+
+
+Route::get('/projects', [ProjectController::class, 'index']); // API
 //Route::get('/projects', [ProjectController::class, 'index'])->name('projects'); // View
 
-Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects/{id}', [ProjectController::class, 'show']);
 
 // Route::inertia()
 
