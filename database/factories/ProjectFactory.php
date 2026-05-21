@@ -18,7 +18,12 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->sentence(3),
+            'description' => $this->faker->paragraph(),
+            'status' => $this->faker->randomElement(['pending', 'active', 'completed', 'cancelled']),
+            'start_date' => $this->faker->optional()->date(),
+            'end_date' => $this->faker->optional()->date(),
         ];
     }
+
 }

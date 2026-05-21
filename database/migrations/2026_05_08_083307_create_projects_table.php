@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // CUIDADO CON EL NOMBRE DE LAS COLUMNAS.
+        // He estado 10 mins buscando un error de creacion de filas, finalmente era description, tenia puesto descripcion.
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // Obligatorio por defecto
+            $table->text('description')->nullable();
+            $table->enum('status', ['pending', 'active', 'completed', 'cancelled'])->default('pending');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

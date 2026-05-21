@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFactory> */
+    // IMPORTANTE. Si no tiene esto, laravel no encuentra el factory.
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'status',
+        'start_date',
+        'end_date',
+    ];
 }

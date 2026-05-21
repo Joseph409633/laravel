@@ -21,4 +21,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
 
+use App\Http\Controllers\ProjectController;
+use Inertia\Inertia;
+
+Route::get('/projects', function(){
+    return Inertia::render('Projects', [
+    'projects' => ProjectController::class, 'index'
+]);
+}); // API
+//Route::get('/projects', [ProjectController::class, 'index'])->name('projects'); // View
+
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+
+// Route::inertia()
+
+// Route::get('/inertia', function(){
+//     return Inertia::render('Projects/Index', ['projects' => $projects]);
+// });
+
 require __DIR__.'/settings.php';

@@ -8,10 +8,12 @@ use Illuminate\Database\Seeder;
 class ProjectSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds. Genera filas aleatorias.
      */
     public function run(): void
     {
-        //
+        \App\Models\Project::factory(30)->create();
     }
+
+
 }
